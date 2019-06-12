@@ -36,5 +36,5 @@
 - https://github.com/patelkr07/MessageBox/projects/1?add_cards_query=is%3Aopen
 
 ## Database Diagram
-!Database Diagram(./assets/images/table.jpg)
-Format: !Database Diagram(url)
+![Database Diagram](./assets/images/table.jpg "Title")
+
