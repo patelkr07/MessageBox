@@ -12,7 +12,7 @@
 - Kunal Patel(https://github.com/patelkr07)
   - Role - TBD
 
-- Angela Pizarras(Github Link)
+- Angela Pizarras(https://github.com/apizarras?tab=repositories)
   - Role - TBD
 
 
