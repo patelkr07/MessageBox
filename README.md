@@ -22,11 +22,11 @@
 * Javascript
 * Meteor
 * APIs
-    * Facebook
     * Twitter
-    * Instagram
     * Whatsapp
     * Google Hangouts
+    * Slack
+    * 
 * Node.js
 * Express
 * SQL
