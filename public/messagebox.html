@@ -29,8 +29,26 @@
       <img src="./assets/images/3phones.webp">
 
       <!--table structure for messaage-->
-      <table>
+      <form action="">
+        Phone number please:<br>
+    <input type="text" name="phone" value="">
+    <br>
+    Send Msg:<br>
+    <input type="text" name="msg" value="">
+    <br><br>
+    <input type="submit" value="submit">
+    
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
         
-      </table>
+        // let socket = io.connect('http://localhost:3000');
+let socket = io()
+        // socket.on('connect', function(data) {
+        //     socket.emit('join', 'User is now connected')
+        // });
+        </script>
 </body>
 </html>
