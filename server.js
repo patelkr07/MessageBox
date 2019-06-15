@@ -30,7 +30,7 @@ server.listen(PORT, function () {
 });
 
 // Require route files here
-
+require('./routes/htmlroutes')(app);
 
 //Syncing sequelize models and starting express app
 // db.sequelize.sync({force: true}).then(function() {
