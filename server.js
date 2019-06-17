@@ -6,6 +6,12 @@ const app = express();
 
 const server = require('http').createServer(app);
 
+const Linkedin = require('node-linkedin')(process.env.LINKEDINCLIENTID, process.env.LINKEDINSECRET);
+
+Linkedin.auth.setCallback('http://lvh.me');
+
+
+
 const io = require('socket.io')(server);
 // .listen(server);
 
@@ -14,7 +20,7 @@ const PORT = process.env.PORT || 3000;
 const connections = [];
 
 
-// const db = require("./models");
+const db = require("./models");
 
 var twilio = require('twilio');
 
@@ -25,19 +31,19 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Listening on designated port
-server.listen(PORT, function () {
-    console.log('server listening on: ' + PORT);
-});
+// server.listen(PORT, function () {
+//     console.log('server listening on: ' + PORT);
+// });
 
 // Require route files here
 require('./routes/htmlroutes')(app);
 
 //Syncing sequelize models and starting express app
-// db.sequelize.sync({force: true}).then(function() {
-//     app.listen(PORT, function() {
-//         console.log("app listending at PORT: " + MessagePort)
-//     });
-// });
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function() {
+        console.log("app listening at PORT %s: " + PORT)
+    });
+});
 
 // The foloowing sets up socket.io connection
 io.on('connection', function(socket){
