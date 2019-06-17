@@ -9,34 +9,41 @@ module.exports = function(app) {
   });
 
 //LinkedIn
-const scope = ['r_basicprofile', 'r_emailaddress'];
+const scope = ['r_liteprofile', 'r_emailaddress', 'w_member_social'];
+let linkedinToken;
 
-  let linkedin = Linkedin.init(this.token);
     app.get('/oauth/linkedin/callback', function(req, res) {
       console.log(res);
+      
         Linkedin.auth.getAccessToken(res, req.query.code, req.query.state, function(err, results) {
             if ( err )
                 return console.error(err);
-            console.log(results);
+            console.log("getting access token: " + results.access_token);
+            linkedinToken = results.access_token;
+            console.log("after define linkedin" + linkedinToken);
             return res.redirect('/');
         });
     });
 
     app.get('/oauth/linkedin', function(req, res) {
       // This will ask for permisssions etc and redirect to callback url.
-      console.log(res);
+      // console.log(res);
       Linkedin.auth.authorize(res, scope);
-      // let linkedin = Linkedin.init(res.query.access_token || res.accessToken);
     });
     // still working on this route below
     app.get('/linkedin/people', function(request,res){
+      console.log("access token inside people get: " + linkedinToken)
       request.get('http://api.linkedin.com/v2/people/~?format=json', {
           host: 'api.linkedin.com',
           connection: 'Keep-Alive',
           auth: {
-              'bearer': request.user.linkedin.token
+              'bearer': linkedinToken
           }
       }, function(error,apiRes,body){
+        if(error) {
+          console.log(error)
+        };
+        console.log(apiRes);
           res.send(apiRes);
       });
     });
