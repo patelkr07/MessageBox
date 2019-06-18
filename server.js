@@ -13,31 +13,27 @@ const PORT = process.env.PORT || 3000;
 
 const connections = [];
 
-
-// const db = require("./models");
+const db = require("./models");
 
 var twilio = require('twilio');
 
+let plivo = require('plivo');
+let client = new plivo.Client(process.env.PLIVO_AUTH_ID, process.env.PLIVO_AUTH_TOKEN);
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 app.use(express.static("public"));
 
-// Listening on designated port
-server.listen(PORT, function () {
-    console.log('server listening on: ' + PORT);
-});
-
 // Require route files here
 require('./routes/htmlroutes')(app);
 
 //Syncing sequelize models and starting express app
-// db.sequelize.sync({force: true}).then(function() {
-//     app.listen(PORT, function() {
-//         console.log("app listending at PORT: " + MessagePort)
-//     });
-// });
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function() {
+        console.log("app listening at PORT %s: " + PORT)
+    });
+});
 
 // The foloowing sets up socket.io connection
 io.on('connection', function(socket){
@@ -67,3 +63,20 @@ socket.on('disconnect', function(data) {
 // })
 // .then((message) => console.log(message.sid));
 
+    $(document).ready(function() {
+        $('#clockwork').click(function() {
+            (function main() {
+                'use strict';
+            client.messages.create(
+                "+14843093891", // src
+                "+17133960120", // dst
+                "Test Message", // text
+            ).then(function (response) {
+                console.log(response);
+            }, function (err) {
+                console.error(err);
+            });
+            })();
+        })
+    })
+        
