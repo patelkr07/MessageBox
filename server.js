@@ -27,6 +27,7 @@ app.use(express.static("public"));
 
 // Require route files here
 require('./routes/htmlroutes')(app);
+require('./routes/api-routes')(app);
 
 //Syncing sequelize models and starting express app
 db.sequelize.sync().then(function() {
@@ -63,20 +64,7 @@ socket.on('disconnect', function(data) {
 // })
 // .then((message) => console.log(message.sid));
 
-    $(document).ready(function() {
-        $('#clockwork').click(function() {
-            (function main() {
-                'use strict';
-            client.messages.create(
-                "+14843093891", // src
-                "+17133960120", // dst
-                "Test Message", // text
-            ).then(function (response) {
-                console.log(response);
-            }, function (err) {
-                console.error(err);
-            });
-            })();
-        })
-    })
+
+            
+
         
