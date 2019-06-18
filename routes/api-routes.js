@@ -10,7 +10,8 @@ module.exports=function(app) {
         (function main() {
             'use strict';
             console.log("this is plivoData body.dst: " + plivoData.body.dst);
-            console.log("trying to get req.body")
+            console.log("trying to get req.body");
+            //code from Plivio api docs
         client.messages.create(
             plivoSrc, // src
             plivoData.body.dst, // dst
