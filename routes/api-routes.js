@@ -6,13 +6,15 @@ const plivoSrc = process.env.PLIVO_SRC;
 console.log(plivoSrc);
 
 module.exports=function(app) {
-    app.post('/send/message', function (req, res) {
+    app.post('/send/message', function (plivoData, req, res) {
         (function main() {
             'use strict';
+            console.log("this is plivoData body.dst: " + plivoData.body.dst);
+            console.log("trying to get req.body")
         client.messages.create(
             plivoSrc, // src
-            "+17133960120", // dst
-            "Test Message", // text
+            plivoData.body.dst, // dst
+            plivoData.body.text, // text
         ).then(function (response) {
             console.log(response);
         }, function (err) {
