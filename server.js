@@ -6,12 +6,6 @@ const app = express();
 
 const server = require('http').createServer(app);
 
-const Linkedin = require('node-linkedin')(process.env.LINKEDINCLIENTID, process.env.LINKEDINSECRET);
-
-Linkedin.auth.setCallback('http://lvh.me');
-
-
-
 const io = require('socket.io')(server);
 // .listen(server);
 
@@ -19,21 +13,17 @@ const PORT = process.env.PORT || 3000;
 
 const connections = [];
 
-
 const db = require("./models");
 
 var twilio = require('twilio');
 
+let plivo = require('plivo');
+let client = new plivo.Client(process.env.PLIVO_AUTH_ID, process.env.PLIVO_AUTH_TOKEN);
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 app.use(express.static("public"));
-
-// Listening on designated port
-// server.listen(PORT, function () {
-//     console.log('server listening on: ' + PORT);
-// });
 
 // Require route files here
 require('./routes/htmlroutes')(app);
@@ -73,3 +63,20 @@ socket.on('disconnect', function(data) {
 // })
 // .then((message) => console.log(message.sid));
 
+    $(document).ready(function() {
+        $('#clockwork').click(function() {
+            (function main() {
+                'use strict';
+            client.messages.create(
+                "+14843093891", // src
+                "+17133960120", // dst
+                "Test Message", // text
+            ).then(function (response) {
+                console.log(response);
+            }, function (err) {
+                console.error(err);
+            });
+            })();
+        })
+    })
+        

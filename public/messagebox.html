@@ -21,9 +21,9 @@
           </div>
         </div>
         <nav class="navbar navbar-dark bg-dark">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <input class="navbar-toggler" type="input" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
+          </input>
         </nav>
       </div>
 
@@ -50,27 +50,28 @@
       <img src="./assets/images/3phones.webp">
 
       <!--table structure for messaage-->
-      <!-- <form action="">
-        Phone number please:<br>
+    <form action="">
+    Phone number please:<br>
     <input type="text" name="phone" value="">
     <br>
     Send Msg:<br>
     <input type="text" name="msg" value="">
     <br><br>
-    <input type="submit" value="submit">
+    <input type="submit" id="whatsapp" value="submit">Send WhatsApp Msg</input>
+    <input type="button" id="clockwork" value="Open In Same Window">Send ClockWork Msg</input>
     
     </form>
 
-    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="/socket.io/socket.io.js"></script>
 
-    <script> -->
-        
-        // let socket = io.connect('http://localhost:3000');
-let socket = io()
-        // socket.on('connect', function(data) {
-        //     socket.emit('join', 'User is now connected')
-        // });
-        </script>
+    <script>
+      let socket = io.connect('http://localhost:3000');
+      let socket = io()
+      socket.on('connect', function(data) {
+      socket.emit('join', 'User is now connected')
+      });
+      </script> -->
 
+<script src="./messages.js"></script>
 </body>
 </html>
