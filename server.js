@@ -25,7 +25,7 @@ db.sequelize.sync().then(function() {
 
 // const db = require("./models");
 
-var twilio = require('twilio');
+// var twilio = require('twilio');
 
 
 app.use(express.urlencoded({extended: true}));
@@ -63,8 +63,8 @@ require('./routes/htmlroutes')(app);
 
 // The following is for Whatsapp Twilio API
 
-// var accountSid = 'account sid goes here'; // Your Account SID from www.twilio.com/console
-// var authToken = 'Auth token goes here';   // Your Auth Token from www.twilio.com/console
+// var accountSid = process.env.TWILIO_ID; // Your Account SID from www.twilio.com/console
+// var authToken = process.env.TWILIO_TOKEN;   // Your Auth Token from www.twilio.com/console
 
 // var twilio = require('twilio');
 // var client = new twilio(accountSid, authToken);
