@@ -2,16 +2,25 @@ require("dotenv").config();
 
 const express = require("express");
 
+var db = require("./models")
+
 const app = express();
 
 const server = require('http').createServer(app);
 
-const io = require('socket.io')(server);
-// .listen(server);
+// const io = require('socket.io')(server);
+// // .listen(server);
 
 const PORT = process.env.PORT || 3000;
 
 const connections = [];
+
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function() {
+        console.log("ListeninG on port %s", PORT);
+        console.log("Hey Brandon!")
+    });
+});
 
 
 // const db = require("./models");
@@ -25,9 +34,9 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Listening on designated port
-server.listen(PORT, function () {
-    console.log('server listening on: ' + PORT);
-});
+// server.listen(PORT, function () {
+//     console.log('server listening on: ' + PORT);
+// });
 
 // Require route files here
 require('./routes/htmlroutes')(app);
@@ -40,17 +49,17 @@ require('./routes/htmlroutes')(app);
 // });
 
 // The foloowing sets up socket.io connection
-io.on('connection', function(socket){
-    connections.push(socket);
-    console.log('Connected: %s sockets connected', connections.length);
-    // socket.on('disconnect', function(){
-    //   console.log('user disconnected');
-    // });
-socket.on('disconnect', function(data) {
-    connections.splice(connections.indexOf(socket), 1);
-    console.log('Disconnected: %s sockets connected', connections.length);
-    })
-  });
+// io.on('connection', function(socket){
+//     connections.push(socket);
+//     console.log('Connected: %s sockets connected', connections.length);
+//     // socket.on('disconnect', function(){
+//     //   console.log('user disconnected');
+//     // });
+// socket.on('disconnect', function(data) {
+//     connections.splice(connections.indexOf(socket), 1);
+//     console.log('Disconnected: %s sockets connected', connections.length);
+//     })
+//   });
 
 // The following is for Whatsapp Twilio API
 
