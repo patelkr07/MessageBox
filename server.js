@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const bodyParser = require('body-parser');
 
 var db = require("./models")
 
@@ -27,10 +28,13 @@ db.sequelize.sync().then(function() {
 
 // var twilio = require('twilio');
 
+let plivo = require('plivo');
+let client = new plivo.Client(process.env.PLIVO_AUTH_ID, process.env.PLIVO_AUTH_TOKEN);
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-
+app.use(bodyParser.urlencoded({extended: true}));
+app.set('port',(process.env.PORT || 5000));
 app.use(express.static("public"));
 
 // Listening on designated port
@@ -40,13 +44,14 @@ app.use(express.static("public"));
 
 // Require route files here
 require('./routes/htmlroutes')(app);
+require('./routes/api-routes')(app);
 
 //Syncing sequelize models and starting express app
-// db.sequelize.sync({force: true}).then(function() {
-//     app.listen(PORT, function() {
-//         console.log("app listending at PORT: " + MessagePort)
-//     });
-// });
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function() {
+        console.log("app listening at PORT %s: " + PORT)
+    });
+});
 
 // The foloowing sets up socket.io connection
 // io.on('connection', function(socket){
@@ -76,3 +81,9 @@ require('./routes/htmlroutes')(app);
 // })
 // .then((message) => console.log(message.sid));
 
+app.listen(app.get('port'), function() {
+    console.log('Plivo Node app is running on port', app.get('port'));
+});
+            
+
+        
