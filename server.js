@@ -12,7 +12,9 @@ const server = require('http').createServer(app);
 // const io = require('socket.io')(server);
 // // .listen(server);
 
-const PORT = process.env.PORT || 3000;
+
+
+const PORT = process.env.PORT || 5000;
 
 const connections = [];
 
@@ -47,11 +49,11 @@ require('./routes/htmlroutes')(app);
 require('./routes/api-routes')(app);
 
 //Syncing sequelize models and starting express app
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-        console.log("app listening at PORT %s: " + PORT)
-    });
-});
+// db.sequelize.sync().then(function() {
+//     app.listen(PORT, function() {
+//         console.log("app listening at PORT %s: " + PORT)
+//     });
+// });
 
 // The foloowing sets up socket.io connection
 // io.on('connection', function(socket){
@@ -66,20 +68,6 @@ db.sequelize.sync().then(function() {
 //     })
 //   });
 
-// The following is for Whatsapp Twilio API
-
-// var accountSid = process.env.TWILIO_ID; // Your Account SID from www.twilio.com/console
-// var authToken = process.env.TWILIO_TOKEN;   // Your Auth Token from www.twilio.com/console
-
-// var twilio = require('twilio');
-// var client = new twilio(accountSid, authToken);
-
-// client.messages.create({
-//     body: 'Hello from Node',
-//     to: '+',  // Text this number
-//     from: '+16782938209' // From a valid Twilio number
-// })
-// .then((message) => console.log(message.sid));
 
 app.listen(app.get('port'), function() {
     console.log('Plivo Node app is running on port', app.get('port'));
