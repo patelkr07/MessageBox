@@ -5,6 +5,10 @@ const server = require('../server');
 const plivoSrc = process.env.PLIVO_SRC;
 console.log(plivoSrc);
 
+const twilioSrc = process.env.TWILIO_SRC;
+var twilio = require('twilio');
+var clientTwilio = new twilio(process.env.TWILIO_AUTH_ID,process.env.TWILIO_TOKEN);
+
 module.exports=function(app) {
     app.post('/send/message', function (plivoData, req, res) {
         (function main() {
@@ -36,4 +40,20 @@ module.exports=function(app) {
         console.log('Message received - From: ', from_number, ', To: ', to_number, ', Text: ', text);
         response.send("Message received");
     });
+      app.post('/send/message/whatsapp' , function (twilioData, req, res) {
+        (function sendMessage() {
+            'use strict';
+            console.log('Data:' + twilioData.body);
+
+            // The following is for Whatsapp Twilio API
+        clientTwilio.messages.create({
+            body: twilioData.body.msg ,
+            to: "+1" + twilioData.body.phoneNumber,  // Text this number
+            from: twilioSrc  // From a valid Twilio number
+        })
+        .then((message) => console.log(message.sid));
+
+
+        })();
+      });
 };
