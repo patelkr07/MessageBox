@@ -1,0 +1,124 @@
+<div id='body'>
+    <!-- Bootstrap NavBar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+                <img class='resize rounded' src="./assets/images/msgbx-logo.JPG" alt="MessageBox">
+              </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home
+                      <span class="sr-only">(current)</span>
+                    </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+</table>
+  <div class='container'>
+      <!--table structure for messages-->
+  <div class='row'>
+    <div class='col-1'>
+    </div>
+    <div class='col-4'>
+      <br>
+        <div class="card" style="width: 18rem;">
+            <i class="fab fa-whatsapp-square" aria-hidden="true"></i>
+            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+            <div class="card-body">
+              <h5 class="card-title">From Phone Number</h5>
+              <p class="card-text">lorem ipsum message body goes here.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+    </div>
+    
+    <div class='col-1'>
+    </div>
+    <div class='col-4'>
+        <br>
+        <div class="card" style="width: 18rem;">
+            <i class="fas fa-sms" aria-hidden="true"></i>
+            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+            <div class="card-body">
+              <h5 class="card-title">From Phone Number</h5>
+              <p class="card-text">lorem ipsum message body goes here.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+    </div>
+    <div class='col-1'>
+      
+    </div>
+  </div>
+
+      <!-- Send message modal -->
+    {{!-- <form action="">
+    Destination Phone Number:<br>
+    <input type="text" id="dst" name="phone" value="">
+    <br>
+    Message:<br>
+    <input type="text" id="text" name="msg" value=""> --}}
+    <br><br>
+    <input type="submit" id="whatsapp" value="submit"></input>
+    {{!-- below is button to launch modal, from getbootstrap.com --}}
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@plivo">Send Plivo Msg</button>
+    {{!-- below is the modal form, from getbootstrap.com --}}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient Phone Number:</label>
+            <input type="text" class="form-control" id="dst">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="plivo">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    {{!-- </form>
+    </div>
+  </div> --}}
+    <!-- <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      let socket = io.connect('http://localhost:3000');
+      let socket = io()
+      socket.on('connect', function(data) {
+      socket.emit('join', 'User is now connected')
+      });
+      </script> -->
+
+<script src="./messages.js"></script>
