@@ -8,5 +8,11 @@ module.exports = function(sequelize, DataTypes) {
         social_type: DataTypes.STRING,
         profile_image: DataTypes.BLOB
     });
+
+    User.associate = function(models) {
+        User.hasMany(models.Post, {
+            onDelete: "cascade"
+        });
+    };
     return User;
 };

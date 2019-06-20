@@ -2,9 +2,9 @@ require("dotenv").config();
 
 const express = require("express");
 const bodyParser = require('body-parser');
-
+const exphbs = require("express-handlebars");
 const app = express();
-
+const router = express.Router();
 const server = require('http').createServer(app);
 
 const io = require('socket.io')(server);
@@ -26,10 +26,14 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('port',(process.env.PORT || 5000));
 app.use(express.static("public"));
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
 // Require route files here
 require('./routes/htmlroutes')(app);
 require('./routes/api-routes')(app);
+// const routes = require('./routes/api-routes');
+// app.use(routes);
 
 //Syncing sequelize models and starting express app
 db.sequelize.sync().then(function() {
@@ -65,6 +69,16 @@ socket.on('disconnect', function(data) {
 //     from: '+16782938209' // From a valid Twilio number
 // })
 // .then((message) => console.log(message.sid));
+
+// router.get("/", function(req, res) {
+//     messages.all(function(data) {
+//         const hbsObject = {
+//             messages: data,
+//         };
+//         console.log(hbsObject);
+//         res.render("index", hbsObject);
+//     });
+// });
 
 app.listen(app.get('port'), function() {
     console.log('Plivo Node app is running on port', app.get('port'));

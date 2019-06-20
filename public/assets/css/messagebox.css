@@ -4,3 +4,16 @@
     background-size: cover;
     height: 100vh;
 }
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.resize {
+    width: 10vh;
+    height: 10vh
+}
