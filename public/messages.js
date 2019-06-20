@@ -18,6 +18,37 @@ $(document).ready(function() {
             console.log(err);
         });
     });
+
+    $(document).on('click', '#whatsapp', function() {
+        event.preventDefault();
+        const phoneNumber = $("#dst").val().trim();
+        const msg = $("#text").val().trim();
+        console.log(phoneNumber);
+        console.log(msg);
+        twilioData = {
+            phoneNumber: phoneNumber,
+            msg: msg
+        }
+console.log(twilioData);
+        $.ajax('send/message/whatsapp', {
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(twilioData)
+        }).then(function(response){
+            console.log(response);
+        }).catch(function(err) {
+            console.log(err)
+        }); 
+    
+    });
+    
+    
+
+
+
+
+
+
 // modal code from getbootstrap.com
     $('#Modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
@@ -29,3 +60,9 @@ $(document).ready(function() {
         modal.find('.modal-body input').val(recipient)
       })
 });
+
+
+// let socket = io();
+
+
+
