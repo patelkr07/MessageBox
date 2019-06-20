@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     const Post = sequelize.define("Post", {
-        phone: {
-            type: DataTypes.INTEGER,
+        dst: {
+            type: DataTypes.STRING,
             allowNull: false
         },
         text: {

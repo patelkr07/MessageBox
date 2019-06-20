@@ -17,16 +17,12 @@ const server = require('http').createServer(app);
 const PORT = process.env.PORT || 5000;
 
 const connections = [];
-
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-        console.log("ListeninG on port %s", PORT);
-        console.log("Hey Brandon!")
-    });
-});
+const db = require("./models");
 
 
-// const db = require("./models");
+
+
+
 
 // var twilio = require('twilio');
 
@@ -40,11 +36,6 @@ app.set('port',(process.env.PORT || 5000));
 app.use(express.static("public"));
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
-
-// Listening on designated port
-// server.listen(PORT, function () {
-//     console.log('server listening on: ' + PORT);
-// });
 
 // Require route files here
 require('./routes/htmlroutes')(app);
@@ -83,13 +74,19 @@ require('./routes/api-routes')(app);
 //     });
 // });
 
-app.listen(app.get('port'), function() {
-    console.log('Plivo Node app is running on port', app.get('port'));
-});
+// app.listen(app.get('port'), function() {
+//     console.log('Plivo Node app is running on port', app.get('port'));
+// });
             
 // Twilio recieve messages listener
 http.createServer(app).listen(PORT, () => {
     console.log('Express server listening on port:' + PORT);
   });
 
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function() {
+        console.log("ListeninG on port %s", PORT);
+        console.log("Hey Brandon!")
+    });
+});
         
