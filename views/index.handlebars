@@ -37,15 +37,16 @@
     </div>
     <div class='col-4'>
       <br>
+      {{#each posts}}
         <div class="card" style="width: 18rem;">
             <i class="fab fa-whatsapp-square" aria-hidden="true"></i>
-            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <div class="card-body">
-              <h5 class="card-title">From Phone Number</h5>
-              <p class="card-text">lorem ipsum message body goes here.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title"><span>From Phone Number:</span>{{this.phone}}</h5>
+              <p class="card-text"><span>Message</span>{{this.text}}</p>
+              {{!-- <a href="#" class="btn btn-primary">Delete</a> --}}
             </div>
           </div>
+      {{/each}}
     </div>
     
     <div class='col-1'>
