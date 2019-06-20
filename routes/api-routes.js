@@ -2,6 +2,7 @@ let plivo = require('plivo');
 let client = new plivo.Client(process.env.PLIVO_AUTH_ID, process.env.PLIVO_AUTH_TOKEN);
 const path = require('path');
 const server = require('../server');
+const db = require("../models")
 const plivoSrc = process.env.PLIVO_SRC;
 console.log(plivoSrc);
 
@@ -11,10 +12,22 @@ var clientTwilio = new twilio(process.env.TWILIO_AUTH_ID,process.env.TWILIO_TOKE
 
 module.exports=function(app) {
     app.post('/send/message', function (plivoData, req, res) {
+        // post to mysql
+        console.log("db.Post.create: "+ plivoData.body.dst);
+        console.log("db: " + db.Posts);
+            db.Post.create({
+                dst: plivoData.body.dst,
+                text: plivoData.body.text
+            }).then(function(dbPost) {
+                console.log(res);
+                console.log(dbPost)
+                // getting res.json is a not a function error
+                res.json(dbPost);
+            });
+        this portion sends the message via Plivo api
         (function main() {
             'use strict';
             console.log("this is plivoData body.dst: " + plivoData.body.dst);
-            console.log("trying to get req.body");
             //code from Plivio api docs
         client.messages.create(
             plivoSrc, // src
@@ -26,7 +39,22 @@ module.exports=function(app) {
             console.error(err);
         });
         })();
-      });
+    });
+        // UNDER CONSTRUCTION
+        // this portion creates the message in mysql database
+        // app.post('/send/message', function(plivoData, req, res) {
+        //     console.log("mysql post data: " + plivoData);
+        //     console.log("req: " + req.body);
+        //     console.log("res: " + res.body) ;
+        //     post.create([
+        //         "dst", "text"
+        //     ],[
+        //         req.body.phone, req.body.text
+        //     ], function(result) {
+        //         res.json({id: result.insertId});
+        //     });
+        //   });
+        // })
 
       //Plivo recieving messages
     app.all('/receive_sms/', function(request, response) {
@@ -66,4 +94,5 @@ module.exports=function(app) {
         res.writeHead(200, {'Content-Type': 'text/xml'});
         res.end(twiml.toString());
       });
+};
 };
