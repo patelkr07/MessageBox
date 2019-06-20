@@ -8,6 +8,7 @@ console.log(plivoSrc);
 
 module.exports=function(app) {
     app.post('/send/message', function (plivoData, req, res) {
+        // this portion sends the message via Plivo api
         (function main() {
             'use strict';
             console.log("this is plivoData body.dst: " + plivoData.body.dst);
@@ -23,6 +24,16 @@ module.exports=function(app) {
             console.error(err);
         });
         })();
+
+        // UNDER CONSTRUCTION
+        // this portion creates the message in mysql database
+        post.create([
+            "dst", "text"
+        ],[
+            req.body.phone, req.body.text
+        ], function(result) {
+            res.json({id: result.insertId});
+        });
       });
 
       //Plivo recieving messages
