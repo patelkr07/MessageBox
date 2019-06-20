@@ -15,12 +15,7 @@ const PORT = process.env.PORT || 3000;
 const connections = [];
 const db = require("./models");
 
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-        console.log("ListeninG on port %s", PORT);
-        console.log("Hey Brandon!")
-    });
-});
+
 
 
 
@@ -37,11 +32,6 @@ app.set('port',(process.env.PORT || 5000));
 app.use(express.static("public"));
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
-
-// Listening on designated port
-// server.listen(PORT, function () {
-//     console.log('server listening on: ' + PORT);
-// });
 
 // Require route files here
 require('./routes/htmlroutes')(app);
@@ -98,5 +88,10 @@ require('./routes/api-routes')(app);
 //     console.log('Plivo Node app is running on port', app.get('port'));
 // });
             
-
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function() {
+        console.log("ListeninG on port %s", PORT);
+        console.log("Hey Brandon!")
+    });
+});
         
