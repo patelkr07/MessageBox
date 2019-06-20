@@ -22,6 +22,8 @@
     "clockwork": "^0.1.4",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "handlebars": "^4.1.2",
     "mysql": "^2.17.1",
     "mysql2": "^1.6.5",
     "node-linkedin": "^0.5.6",
