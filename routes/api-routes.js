@@ -21,7 +21,7 @@ module.exports=function(app) {
                 // getting res.json is a not a function error
                 res.json(dbPost);
             });
-        this portion sends the message via Plivo api
+        // this portion sends the message via Plivo api
         (function main() {
             'use strict';
             console.log("this is plivoData body.dst: " + plivoData.body.dst);
@@ -37,21 +37,6 @@ module.exports=function(app) {
         });
         })();
     });
-        // UNDER CONSTRUCTION
-        // this portion creates the message in mysql database
-        // app.post('/send/message', function(plivoData, req, res) {
-        //     console.log("mysql post data: " + plivoData);
-        //     console.log("req: " + req.body);
-        //     console.log("res: " + res.body) ;
-        //     post.create([
-        //         "dst", "text"
-        //     ],[
-        //         req.body.phone, req.body.text
-        //     ], function(result) {
-        //         res.json({id: result.insertId});
-        //     });
-        //   });
-        // })
 
       //Plivo recieving messages
     app.all('/receive_sms/', function(request, response) {
@@ -65,4 +50,13 @@ module.exports=function(app) {
         console.log('Message received - From: ', from_number, ', To: ', to_number, ', Text: ', text);
         response.send("Message received");
     });
+
+    app.get('get/messages', function(req, res){
+        console.log("trying to get messages from db");
+        db.Post.findAll({}).then(function(dbPost) {
+            console.log("getting all messages");
+            res.json(dbPost);
+        });
+    });
+
 };
