@@ -19,11 +19,6 @@ const PORT = process.env.PORT || 5000;
 const connections = [];
 const db = require("./models");
 
-
-
-
-
-
 // var twilio = require('twilio');
 
 let plivo = require('plivo');
