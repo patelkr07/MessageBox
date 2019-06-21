@@ -54,7 +54,6 @@ module.exports=function(app) {
         response.send("Message received");
     });
 
-
     app.get('get/messages', function(req, res){
         console.log("trying to get messages from db");
         db.Post.findAll({}).then(function(dbPost) {
@@ -63,9 +62,7 @@ module.exports=function(app) {
         });
     });
 
-};
-
-      app.post('/send/message/whatsapp' , function (twilioData, req, res) {
+    app.post('/send/message/whatsapp' , function (twilioData, req, res) {
         (function sendMessage() {
             'use strict';
             console.log('Data:' + twilioData.body);
@@ -85,12 +82,10 @@ module.exports=function(app) {
     //   Twilio recieving messages
     app.post('/sms', (req, res) => {
         const twiml = new MessagingResponse();
-      
+
         twiml.message('The Robots are coming! Head for the hills!');
-      
+
         res.writeHead(200, {'Content-Type': 'text/xml'});
         res.end(twiml.toString());
       });
 };
-};
-
