@@ -62,4 +62,30 @@ module.exports=function(app) {
         });
     });
 
+    app.post('/send/message/whatsapp' , function (twilioData, req, res) {
+        (function sendMessage() {
+            'use strict';
+            console.log('Data:' + twilioData.body);
+
+            // The following is for Whatsapp Twilio API
+        clientTwilio.messages.create({
+            body: twilioData.body.msg ,
+            to: "+1" + twilioData.body.phoneNumber,  // Text this number
+            from: twilioSrc  // From a valid Twilio number
+        })
+        .then((message) => console.log(message.sid));
+
+
+        })();
+      });
+
+    //   Twilio recieving messages
+    app.post('/sms', (req, res) => {
+        const twiml = new MessagingResponse();
+
+        twiml.message('The Robots are coming! Head for the hills!');
+
+        res.writeHead(200, {'Content-Type': 'text/xml'});
+        res.end(twiml.toString());
+      });
 };
