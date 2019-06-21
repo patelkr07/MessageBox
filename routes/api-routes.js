@@ -62,8 +62,20 @@ module.exports=function(app) {
             res.json(dbPost);
         });
     });
-
+// The following sends a message to the designated whatsapp phone number
     app.post('/send/message/whatsapp' , function (twilioData, req, res) {
+        console.log("db.Post.create: "+ twilioData.body.dst);
+        console.log("db: " + db.Posts);
+            db.Post.create({
+                dst: twilioData.body.phoneNumber,
+                text: twilioData.body.msg
+            }).then(function(dbPost) {
+                console.log(res);
+                console.log(dbPost)
+                // getting res.json is a not a function error
+                res.json(dbPost);
+            });
+
         (function sendMessage() {
             'use strict';
             console.log('Data:' + twilioData.body);
