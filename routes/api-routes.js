@@ -6,6 +6,9 @@ const db = require("../models")
 const plivoSrc = process.env.PLIVO_SRC;
 console.log(plivoSrc);
 
+const twilioSrc = process.env.TWILIO_SRC;
+var twilio = require('twilio');
+var clientTwilio = new twilio(process.env.TWILIO_AUTH_ID,process.env.TWILIO_TOKEN);
 
 module.exports=function(app) {
     app.post('/send/message', function (plivoData, req, res) {
