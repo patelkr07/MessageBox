@@ -7,6 +7,7 @@ const plivoSrc = process.env.PLIVO_SRC;
 console.log(plivoSrc);
 
 const twilioSrc = process.env.TWILIO_SRC;
+console.log(process.env.TWILIO_SRC);
 var twilio = require('twilio');
 var clientTwilio = new twilio(process.env.TWILIO_AUTH_ID,process.env.TWILIO_TOKEN);
 
@@ -54,7 +55,7 @@ module.exports=function(app) {
         response.send("Message received");
     });
 
-    app.get('get/messages', function(req, res){
+    app.get('/get/messages', function(req, res){
         console.log("trying to get messages from db");
         db.Post.findAll({}).then(function(dbPost) {
             console.log("getting all messages");

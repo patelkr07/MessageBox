@@ -74,9 +74,9 @@ require('./routes/api-routes')(app);
 // });
             
 // Twilio recieve messages listener
-http.createServer(app).listen(PORT, () => {
-    console.log('Express server listening on port:' + PORT);
-  });
+// http.createServer(app).listen(PORT, () => {
+//     console.log('Express server listening on port:' + PORT);
+//   });
 
 db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
