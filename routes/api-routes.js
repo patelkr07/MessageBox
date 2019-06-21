@@ -2,7 +2,8 @@ let plivo = require('plivo');
 let client = new plivo.Client(process.env.PLIVO_AUTH_ID, process.env.PLIVO_AUTH_TOKEN);
 const path = require('path');
 const server = require('../server');
-const db = require("../models")
+const db = require("../models");
+var passport = require("../config/passport");
 const plivoSrc = process.env.PLIVO_SRC;
 console.log(plivoSrc);
 
@@ -11,6 +12,41 @@ var twilio = require('twilio');
 var clientTwilio = new twilio(process.env.TWILIO_AUTH_ID,process.env.TWILIO_TOKEN);
 
 module.exports=function(app) {
+
+    app.post("/api/login", passport.authenticate("local"), function(req, res) {
+        res.json("/members");
+    });
+
+    app.post("/api/signup", function(req, res) {
+        console.log(req.body);
+        db.User.create({
+            email: req.body.email,
+            password: req.body.password
+        }).then(function() {
+            res.redirect(307, "/api/login");
+        }).catch(function(err) {
+            console.log(err);
+            res.json(err);
+        });
+    });
+
+    app.get("/logout", function(req, res) {
+        req.logout();
+        res.redirect("/");
+    });
+
+    app.get("/api/user_data", function(req, res) {
+        if (!req.user) {
+            res.json({});
+        }
+        else {
+            res.json({
+                email: req.user.email,
+                id: req.user.id
+            });
+        }
+    });
+    
     app.post('/send/message', function (plivoData, req, res) {
         // post to mysql
         console.log("db.Post.create: "+ plivoData.body.dst);
@@ -22,7 +58,7 @@ module.exports=function(app) {
                 console.log(res);
                 console.log(dbPost)
                 // getting res.json is a not a function error
-                res.json(dbPost);
+                // res.json(dbPost);
             });
         // this portion sends the message via Plivo api
         (function main() {
@@ -58,7 +94,7 @@ module.exports=function(app) {
         console.log("trying to get messages from db");
         db.Post.findAll({}).then(function(dbPost) {
             console.log("getting all messages");
-            res.json(dbPost);
+            // res.json(dbPost);
         });
     });
 
