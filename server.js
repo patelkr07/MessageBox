@@ -2,6 +2,8 @@ require("dotenv").config();
 
 const http = require('http');
 const express = require("express");
+const session = require("express-session");
+var passport = require("./config/passport");
 const bodyParser = require('body-parser');
 const exphbs = require("express-handlebars");
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
@@ -29,6 +31,9 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('port',(process.env.PORT || 5000));
 app.use(express.static("public"));
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
@@ -80,8 +85,7 @@ require('./routes/api-routes')(app);
 
 db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
-        console.log("ListeninG on port %s", PORT);
-        console.log("Hey Brandon!")
+        console.log("==> 🌎 Listening on port %s. Visit http://localhost:%s/ in your browser", PORT, PORT);
     });
 });
         
