@@ -8,6 +8,7 @@ const plivoSrc = process.env.PLIVO_SRC;
 console.log(plivoSrc);
 
 const twilioSrc = process.env.TWILIO_SRC;
+console.log(process.env.TWILIO_SRC);
 var twilio = require('twilio');
 var clientTwilio = new twilio(process.env.TWILIO_AUTH_ID,process.env.TWILIO_TOKEN);
 
@@ -90,15 +91,27 @@ module.exports=function(app) {
         response.send("Message received");
     });
 
-    app.get('get/messages', function(req, res){
+    app.get('/get/messages', function(req, res){
         console.log("trying to get messages from db");
         db.Post.findAll({}).then(function(dbPost) {
             console.log("getting all messages");
             // res.json(dbPost);
         });
     });
-
+// The following sends a message to the designated whatsapp phone number
     app.post('/send/message/whatsapp' , function (twilioData, req, res) {
+        console.log("db.Post.create: "+ twilioData.body.dst);
+        console.log("db: " + db.Posts);
+            db.Post.create({
+                dst: twilioData.body.phoneNumber,
+                text: twilioData.body.msg
+            }).then(function(dbPost) {
+                console.log(res);
+                console.log(dbPost)
+                // getting res.json is a not a function error
+                res.json(dbPost);
+            });
+
         (function sendMessage() {
             'use strict';
             console.log('Data:' + twilioData.body);
