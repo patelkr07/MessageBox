@@ -1,32 +1,39 @@
 <div id='body'>
-  <!-- Bootstrap NavBar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img class='resize rounded' src="./assets/images/msgbx-logo.JPG" alt="MessageBox">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
+    <!-- Bootstrap NavBar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+                <img class='resize rounded' src="/assets/images/msgbx-logo.JPG" alt="MessageBox">
+              </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home
+                      <span class="sr-only">(current)</span>
+                    </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+</table>
+  <div class='container'>
+      <!--table structure for messages-->
+  <div class='row'>
+    <div class='col-1'>
     </div>
   </nav>
 
@@ -54,19 +61,18 @@
       </div>
       <div class='col-4'>
         <br>
-        <div class="card" style="width: 18rem;">
-          <i class="fas fa-sms" aria-hidden="true"></i>
-          <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-          <div class="card-body">
-            <h5 class="card-title">From Phone Number</h5>
-            <p class="card-text">lorem ipsum message body goes here.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+        <div class="post-container">
+          
         </div>
-      </div>
-      <div class='col-1'>
-
-      </div>
+        {{!-- <div class="card" style="width: 18rem;">
+            <i class="fas fa-sms" aria-hidden="true"></i>
+            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+            <div class="card-body">
+              <h5 class="card-title">From Phone Number</h5>
+              <p class="card-text">lorem ipsum message body goes here.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div> --}}
     </div>
 
     <!-- Send message modal -->
@@ -157,4 +163,4 @@
       });
       </script> -->
 
-    <script src="./messages.js"></script>
+<script src="/messages.js"></script>
