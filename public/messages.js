@@ -21,8 +21,8 @@ $(document).ready(function() {
 
     $(document).on('click', '#whatsapp', function() {
         event.preventDefault();
-        const phoneNumber = $("#dst").val().trim();
-        const msg = $("#text").val().trim();
+        const phoneNumber = $("#phone").val().trim();
+        const msg = $("#msg").val().trim();
         console.log(phoneNumber);
         console.log(msg);
         twilioData = {
