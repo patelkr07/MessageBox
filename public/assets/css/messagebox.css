@@ -17,3 +17,58 @@
     width: 10vh;
     height: 10vh
 }
+
+.chatbox {
+    width: 100%;
+    min-width: 390px;
+    height: 600px;
+    padding: 0px;
+    margin: 20px auto;
+    height:400px;
+
+}
+
+.messages {
+    padding: 10px;
+    width: 85%;
+    height: 80%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /* border:1px solid #bbb;
+    background-color: #B0E0E6;
+    padding: 10px;
+    width:350px;
+    max-height:20%;
+    overflow-y:scroll;
+    overflow-x:hidden; */
+    }
+
+    .messages::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .recieved {
+        /* flex-direction: row; */
+        padding: 1%;
+        margin:1%;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+    
+    }
+    
+    .sent {
+        /* flex-direction: row; */
+        padding: 1%;
+        color: aliceblue;
+        margin:1%;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        
+    }
+
+    .message-form {
+        padding: 1%;
+        width: 85%;
+    }

@@ -1,39 +1,32 @@
 <div id='body'>
-    <!-- Bootstrap NavBar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-        <div class="container">
-          <a class="navbar-brand" href="#">
-                <img class='resize rounded' src="/assets/images/msgbx-logo.JPG" alt="MessageBox">
-              </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home
-                      <span class="sr-only">(current)</span>
-                    </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              {{!-- <li class="nav-item">
+  <!-- Bootstrap NavBar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img class='resize rounded' src="/assets/images/msgbx-logo.JPG" alt="MessageBox">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          {{!-- <li class="nav-item">
                 <a class="nav-link" href="#">Services</a>
               </li> --}}
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      
-</table>
-  <div class='container'>
-      <!--table structure for messages-->
-  <div class='row'>
-    <div class='col-1'>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -43,125 +36,232 @@
     <div class='row'>
       <div class='col-1'>
       </div>
-      <div class='col-4'>
-        <br>
-        {{!-- The following button launches the modal for Whatsapp --}}
-        <button class="btn btn-success" data-toggle="modal" data-target="#whatsappModal"
-      data-whatever="@whatsapp">Send WhatsApp Msg</button>
-        <br>
-        <br>
+      </nav>
 
-        <div class="card" style="width: 18rem;">
-          <i class="fab fa-whatsapp-square  fa-4x ml-1 text-success" aria-hidden="true"></i>
-          <div class="card-body">
-            <h5 class="card-title"><span>From Phone Number:</span></h5>
-            <h4>281-555-1234</h4>
-            <p class="card-text"><span>So where we at tonight?</span></p>
-            <a href="#" class="btn btn-primary">Reply</a>
+      </table>
+      <div class='container'>
+        <!--table structure for messages-->
+        <div class='row'>
+          <div class='col-1'>
           </div>
-        </div>
-
-        
-      </div>
-
-      <div class='col-1'>
-      </div>
-      <div class='col-4'>
-        <br>
-        <div class="post-container">
-          {{!-- below is button to launch Plivo modal, from getbootstrap.com --}}
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-            data-whatever="@plivo">Send Plivo Msg</button>
+          <div class='col-4'>
+            <br>
+            {{!-- The following button launches the modal for Whatsapp --}}
+            <button class="btn btn-success" data-toggle="modal" data-target="#whatsappModal"
+              data-whatever="@whatsapp">Send WhatsApp Msg</button>
             <br>
             <br>
+
+            <div class="card" style="">
+              <i class="fab fa-whatsapp-square  fa-4x ml-1 text-success" aria-hidden="true"></i>
+              <h5 class="card-title"><span>From Phone Number:</span></h5>
+            <h4>281-555-1234</h4>
+              <div class="card-body chatbox">
+                 
+            {{!--<p class="card-text"><span>So where we at tonight?</span></p>
+            <a href="#" class="btn btn-primary">Reply</a> --}}
+          {{!-- <div class="chatbox"> --}}
+
+<div class="messages bg-white">
+
+
+
+
+
+                  <!-- Second set -->
+                  <div class="recieved mb-1 rounded bg-primary mr-5 whatsapp">
+                    Hey, whatsapp is awesome isn't it?
+                  </div>
+                  <div class="sent mb-1 ml-5 rounded bg-success whatsapp self">
+                    Yeah! This is so cool!
+                  </div>
+                  <div class="recieved mb-1 rounded bg-primary mr-5 whatsapp">
+                    You know, I'm using this app called Message Box to text from Whatsapp. It' pretty neat!
+                  </div>
+                  <div class="sent mb-1 ml-5 rounded bg-success whatsapp self">
+                    What? How is that possible? 
+                  </div>
+                  <div class="recieved mb-1 rounded bg-primary mr-5 whatsapp">
+                    You see, some really awesome, genius developers created this app because they got tired of constantly switching from app to app when they were messaging alot of people.
+                  </div>
+                  <div class="sent mb-1 ml-5 rounded bg-success whatsapp self">
+                   Wow! That's amazing it's probably really complicated though, that's not my thing...
+                  </div>
+                  <div class="recieved mb-1 rounded bg-primary mr-5 whatsapp">
+                    It's actually pretty simple! You see they made it with the intention of not having to look for all your messages in a bunch of settings, everything is right there. I love that about it. Less hassle, more texting!
+                  </div>
+                  <div class="sent mb-1 ml-5 rounded bg-success whatsapp self">
+                    Great! I totally want to try it!, I just wish it was free...
+                  </div>
+                  <div class="recieved mb-1 rounded bg-primary mr-5 whatsapp">
+                    That's the best part! The people behind the app wanted to make accessible to all of us everyday people like you and me! 
+                  </div>
+                  
+
+                </div>
+
+                <div class=" message-form row">
+            <div class="col-12">
+                <textarea class="col-8"></textarea>
+                <button class="mb-5 col-3 btn btn-success">Send Msg</button>
+            </div>
         </div>
-        <div class="card" style="width: 18rem;">
-            <i class="fas fa-sms fa-4x ml-1 text-info" aria-hidden="true"></i>
-            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-            <div class="card-body">
-              <h5 class="card-title">From Phone Number:</h5>
-              <h4>713-123-5555</h4>
-              <p class="card-text">Hey, how's it goin'?</p>
-              <a href="#" class="btn btn-primary">Reply</a>
+
+          {{!-- </div> --}}
+                
+
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class='col-1'>
+          </div>
+          <div class='col-4'>
+            <br>
+            <div class="post-container">
+              {{!-- below is button to launch Plivo modal, from getbootstrap.com --}}
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                data-whatever="@plivo">Send Plivo Msg</button>
+              <br>
+              <br>
+            </div>
+            <div class="card" style="">
+              <i class="fas fa-sms fa-4x ml-1 text-info" aria-hidden="true"></i>
+              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                <h5 class="card-title">From Phone Number:</h5>
+                <h4>713-123-5555</h4>
+
+<div class="card-body chatbox">
+                 
+            {{!--<p class="card-text"><span>So where we at tonight?</span></p>
+            <a href="#" class="btn btn-primary">Reply</a> --}}
+          {{!-- <div class="chatbox"> --}}
+
+<div class="messages bg-white">
+
+
+
+
+
+                  <!-- Second set -->
+                  <div class="recieved mb-1 rounded bg-primary mr-5 whatsapp">
+                    Hey, what's up?
+                  </div>
+                  <div class="sent mb-1 ml-5 rounded bg-success whatsapp self">
+                   Oh not much, just trying out this brand new app called Message Box.
+                  </div>
+                  <div class="recieved mb-1 rounded bg-primary mr-5 whatsapp">
+                   Oh nice! What does it do?
+                  </div>
+                  <div class="sent mb-1 ml-5 rounded bg-success whatsapp self">
+                    It helps me keep messaging nice and simple. You see, sometimes I text alot from all of my different accounts at the same time, Message Box helps me keep it simple and organized in one place.
+                  </div>
+                  <div class="recieved mb-1 rounded bg-primary mr-5 whatsapp">
+                   That sounds great! Too bad I'm always working
+                  </div>
+                  <div class="sent mb-1 ml-5 rounded bg-success whatsapp self">
+                    That's another cool thing about it too, the app is going to update with a bunch of new features that are helpful for business people too!
+                  </div>
+                  <div class="recieved mb-1 rounded bg-primary mr-5 whatsapp">
+                    I can't wait to try it out!
+                  </div>
+                  
+                  
+
+                </div>
+
+                <div class=" message-form row">
+            <div class="col-12">
+                <textarea class="col-8"></textarea>
+                <button class="mb-5 col-3 btn btn-primary">Send Msg</button>
+            </div>
+        </div>
+
+          {{!-- </div> --}}
+                
+
+              </div>
+
             </div>
           </div>
-    </div>
 
-    <!-- Send message modal -->
-    {{!-- <form action="">
+          <!-- Send message modal -->
+          {{!-- <form action="">
     Destination Phone Number:<br>
     <input type="text" id="dst" name="phone" value="">
     <br>
     Message:<br>
     <input type="text" id="text" name="msg" value=""> --}}
-    <br><br>
+          <br><br>
 
-{{!-- This is the modal that is lauched w/ the whatsapp button --}}
-    <div class="modal fade" id="whatsappModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Recipient Phone Number:</label>
-                <input type="text" class="form-control" id="phone">
+          {{!-- This is the modal that is lauched w/ the whatsapp button --}}
+          <div class="modal fade" id="whatsappModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Recipient Phone Number:</label>
+                      <input type="text" class="form-control" id="phone">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Message:</label>
+                      <textarea class="form-control" id="msg"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="whatsapp">Send message</button>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="msg"></textarea>
-              </div>
-            </form>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="whatsapp">Send message</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    {{!-- below is the modal form for Plivo, from getbootstrap.com --}}
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Recipient Phone Number:</label>
-                <input type="text" class="form-control" id="dst">
-              </div>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="text"></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="plivo">Send message</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    {{!-- </form>
+          {{!-- below is the modal form for Plivo, from getbootstrap.com --}}
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Recipient Phone Number:</label>
+                      <input type="text" class="form-control" id="dst">
+                    </div>
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">Message:</label>
+                      <textarea class="form-control" id="text"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="plivo">Send message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {{!-- </form>
     </div>
   </div> --}}
-    <!-- <script src="/socket.io/socket.io.js"></script>
+          <!-- <script src="/socket.io/socket.io.js"></script>
 
     <script>
       let socket = io.connect('http://localhost:3000');
@@ -171,4 +271,4 @@
       });
       </script> -->
 
-<script src="/messages.js"></script>
+          <script src="/messages.js"></script>
