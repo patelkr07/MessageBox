@@ -4,7 +4,8 @@ $(document).ready(function() {
     var $postContainer = $(".post-container");
     const posts = [];
 
-    getPosts();
+    //commenting out this function, currently not displaying the right data
+    // getPosts();
 
     function initializeRows(posts) {
         // console.log("this is row data" + posts);
