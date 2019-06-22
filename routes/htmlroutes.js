@@ -26,9 +26,9 @@ module.exports = function(app) {
     res.render(path.join(__dirname, "../views/index"));
   });
 
-  app.get('/members', function (req, res) {
-    res.render('index')
-  });
+  // app.get('/members', function (req, res) {
+  //   res.render('index')
+  // });
 
   app.get('/get/messages', function (req, res) {
     res.render('index')
