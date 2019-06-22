@@ -18,9 +18,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
               </li>
-              <li class="nav-item">
+              {{!-- <li class="nav-item">
                 <a class="nav-link" href="#">Services</a>
-              </li>
+              </li> --}}
               <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
               </li>
@@ -45,16 +45,22 @@
       </div>
       <div class='col-4'>
         <br>
-        {{#each posts}}
+        {{!-- The following button launches the modal for Whatsapp --}}
+        <button class="btn btn-success" data-toggle="modal" data-target="#whatsappModal"
+      data-whatever="@whatsapp">Send WhatsApp Msg</button>
+        <br>
+        <br>
+
         <div class="card" style="width: 18rem;">
-          <i class="fab fa-whatsapp-square" aria-hidden="true"></i>
+          <i class="fab fa-whatsapp-square  fa-4x ml-1 text-success" aria-hidden="true"></i>
           <div class="card-body">
             <h5 class="card-title"><span>From Phone Number:</span>{{this.phone}}</h5>
-            <p class="card-text"><span>Message</span>{{this.text}}</p>
-            {{!-- <a href="#" class="btn btn-primary">Delete</a> --}}
+            <p class="card-text"><span>So where we at tonight?</span>{{this.text}}</p>
+            <a href="#" class="btn btn-primary">Reply</a>
           </div>
         </div>
-        {{/each}}
+
+        
       </div>
 
       <div class='col-1'>
@@ -62,17 +68,21 @@
       <div class='col-4'>
         <br>
         <div class="post-container">
-          
+          {{!-- below is button to launch Plivo modal, from getbootstrap.com --}}
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@plivo">Send Plivo Msg</button>
+            <br>
+            <br>
         </div>
-        {{!-- <div class="card" style="width: 18rem;">
-            <i class="fas fa-sms" aria-hidden="true"></i>
+        <div class="card" style="width: 18rem;">
+            <i class="fas fa-sms fa-4x ml-1 text-info" aria-hidden="true"></i>
             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <div class="card-body">
               <h5 class="card-title">From Phone Number</h5>
-              <p class="card-text">lorem ipsum message body goes here.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <p class="card-text">Hey, how's it goin'?</p>
+              <a href="#" class="btn btn-primary">Reply</a>
             </div>
-          </div> --}}
+          </div>
     </div>
 
     <!-- Send message modal -->
@@ -83,9 +93,7 @@
     Message:<br>
     <input type="text" id="text" name="msg" value=""> --}}
     <br><br>
-    {{!-- The following button launches the modal for Whatsapp --}}
-    <button class="btn btn-success" data-toggle="modal" data-target="#whatsappModal"
-      data-whatever="@whatsapp">Send Whatsapp Msg</button>
+
 {{!-- This is the modal that is lauched w/ the whatsapp button --}}
     <div class="modal fade" id="whatsappModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
@@ -116,10 +124,8 @@
         </div>
       </div>
     </div>
-    {{!-- below is button to launch modal, from getbootstrap.com --}}
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-      data-whatever="@plivo">Send Plivo Msg</button>
-    {{!-- below is the modal form, from getbootstrap.com --}}
+    
+    {{!-- below is the modal form for Plivo, from getbootstrap.com --}}
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
