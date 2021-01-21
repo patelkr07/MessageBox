@@ -35,7 +35,7 @@
     "plivo": "^4.1.2",
     "sequelize": "^5.8.9",
     "sequelize-cli": "^5.5.0",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.4.0",
     "twilio": "^3.32.0"
   }
 }
